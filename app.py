@@ -34,8 +34,7 @@ def generate_srt(lines, duration_sec):
         
         current_time_ms = end_ms
         
-    return "
-".join(srt_content)
+    return "\n".join(srt_content)
 
 def main():
     st.set_page_config(page_title="軽量SRTジェネレーター", page_icon="📝", layout="centered")
@@ -59,11 +58,7 @@ def main():
     text_input = st.text_area(
         "✍️ 字幕テキストを入力してください (1回の改行 = 1つの字幕ブロック)", 
         height=300,
-        placeholder="ここに入力・貼り付けしてください。
-（例）
-こんにちは！
-今日は良い天気ですね。
-それでは始めていきましょう。"
+        placeholder="ここに入力・貼り付けしてください。\n（例）\nこんにちは！\n今日は良い天気ですね。\nそれでは始めていきましょう。"
     )
     
     if text_input:
@@ -93,4 +88,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
