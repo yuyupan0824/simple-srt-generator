@@ -75,16 +75,20 @@ def main():
             srt_output = generate_srt(lines, duration_sec)
             
             st.markdown("---")
-            st.subheader("👀 SRT プレビュー")
-            st.code(srt_output, language="markdown")
+            
+            # ファイル名に使えない文字を置換し、1行目をファイル名にする
+            safe_filename = lines[0].replace("/", "_").replace("\\", "_")[:50] + ".srt"
             
             st.download_button(
                 label="📥 SRTファイルをダウンロード",
                 data=srt_output,
-                file_name="output.srt",
+                file_name=safe_filename,
                 mime="text/plain",
                 use_container_width=True
             )
+            
+            st.subheader("👀 SRT プレビュー")
+            st.code(srt_output, language="markdown")
 
 if __name__ == "__main__":
     main()
